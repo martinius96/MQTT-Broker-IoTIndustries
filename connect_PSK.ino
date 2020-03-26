@@ -1,7 +1,7 @@
 //ESP32, ESP8266, Arduino + Ethernet - Publish / Subscribe
 //Author: Martin Chlebovec (martinius96)
 //Web: https://arduino.php5.sk
-//Donate: https://paypal.me/chlebovec
+//Donate for more: https://paypal.me/chlebovec
 
 #if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
 #include <SPI.h>
