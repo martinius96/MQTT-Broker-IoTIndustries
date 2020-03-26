@@ -1,4 +1,4 @@
-#if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__)
+#if defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
 #include <SPI.h>
 #include <Ethernet.h>
 //#include <Ethernet2.h> //pre Wiznet W5500 Ethernet shield
@@ -13,7 +13,7 @@
 WiFiClient espClient;
 const char* ssid = "WIFI_NAME";
 const char* password = "WIFI_PASSWORD";
-#elif defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__)
+#elif defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
 EthernetClient espClient;
 byte mac[] = { 0xAA, 0xBB, 0xCC, 0x81, 0x7B, 0x4A };
 //IPAddress ip(192, 168, 0, 2);
@@ -69,7 +69,7 @@ void setup() {
   Serial.println("WiFi connected");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
-#elif defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__)
+#elif defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
   if (Ethernet.begin(mac) == 0) {
     Ethernet.begin(mac);
     //Ethernet.begin(mac, ip);
@@ -95,7 +95,7 @@ void loop() {
     delay(500);
     Serial.print(".");
   }
-#elif defined(Arduino)
+#elif defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
   if (Ethernet.begin(mac) == 0) {
     Ethernet.begin(mac);
     //Ethernet.begin(mac, ip);
