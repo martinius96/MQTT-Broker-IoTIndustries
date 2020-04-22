@@ -1,7 +1,7 @@
 # MQTT Broker - IoT Industries Slovakia
 * **Server:** mqtt.iotindustries.sk
 * **MQTTPort:** 1883
-* **Secured MQTT Port:** 8883
+* **Secured MQTT Port:** 8883 (Working only for ESP8266, ESP32)
 * Example for Arduino, ESP8266, ESP32 boards
 * **Copy PubSubClient to your Arduino/libraries directory**
 * Directory is at: C:/Users/User/Documents/
