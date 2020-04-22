@@ -7,3 +7,7 @@
 * Directory is at: C:/Users/User/Documents/
 #
 ![MQTT Broker - UART - Arduino + Ethernet W5100](https://i.imgur.com/DyHkXkt.png)
+# GET ROOT CA (FOR ESP8266 - MQTTSS CONENCTION)
+* openssl s_client -showcerts -verify 5 -connect mqtt.iotindustries.sk:8883 < /dev/null
+# GET FINGERPRINT (FOR ESP8266 - MQTTS CONENCTION)
+* openssl s_client -connect mqtt.iotindustries.sk:8883 -showcerts < /dev/null 2>/dev/null   | openssl x509 -in /dev/stdin -sha1 -noout -fingerprint
