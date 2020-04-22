@@ -1,6 +1,7 @@
 //ESP32, ESP8266 - Publish / Subscribe - MQTTS
 //Author: Martin Chlebovec (martinius96)
 //Web: https://arduino.php5.sk
+//ESP8266 COMPATIBLE CORE 2.5.0, 2.5.2
 //Donate for more: https://paypal.me/chlebovec
 
 #include <PubSubClient.h>
