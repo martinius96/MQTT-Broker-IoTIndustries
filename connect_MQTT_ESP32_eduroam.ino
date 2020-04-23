@@ -1,3 +1,8 @@
+//ESP32 - Publish / Subscribe - MQTT - WPA/WPA2 Enterprise
+//Author: Martin Chlebovec (martinius96)
+//Web: https://arduino.php5.sk
+//Donate for more: https://paypal.me/chlebovec
+
 #include <WiFi.h>
 #include "esp_wpa2.h" //wpa2 library for connections to Enterprise networks
 #include <PubSubClient.h>
