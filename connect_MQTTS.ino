@@ -6,11 +6,13 @@
 
 #include <PubSubClient.h>
 #include <WiFiClientSecure.h>
-const char* ssid = "huawei-2929";
-const char* password = "chefrolet";
+const char* ssid = "MENO_WIFI";
+const char* password = "HESLO_WIFI";
 
 #if defined(ESP32)
 #include <WiFi.h>
+
+// Root CA
 const static char* test_root_ca PROGMEM = \
     "-----BEGIN CERTIFICATE-----\n" \
     "MIIFdzCCBF+gAwIBAgIQE+oocFv07O0MNmMJgGFDNjANBgkqhkiG9w0BAQwFADBv\n" \
@@ -46,7 +48,7 @@ const static char* test_root_ca PROGMEM = \
     "-----END CERTIFICATE-----\n";
 #elif defined(ESP8266)
 #include <ESP8266WiFi.h>
-const static char fingerprint[] PROGMEM = "f6 15 f1 2a fb b5 ec a1 39 a1 79 30 2a bf 97 bc ce 49 14 5e";
+const static char fingerprint[] PROGMEM = "f6 15 f1 2a fb b5 ec a1 39 a1 79 30 2a bf 97 bc ce 49 14 5e"; //SHA1 FINGERPRINT
 #endif
 #if defined(ESP32) || defined(ESP8266)
 WiFiClientSecure  espClient;
