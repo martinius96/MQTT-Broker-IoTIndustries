@@ -4,7 +4,7 @@
 * **Secured MQTT Port:** 8883 (Working only for ESP8266, ESP32)
 * Example for Arduino, ESP8266, ESP32 boards
 * **Copy PubSubClient to your Arduino/libraries directory**
-* Directory is at: C:/Users/User/Documents/
+* Directory is at: C:/Users/User/Documents/ - Win 10 example
 * Plug n' Play implementations
 #
 ![MQTT Broker - UART - Arduino + Ethernet W5100](https://i.imgur.com/DyHkXkt.png)
