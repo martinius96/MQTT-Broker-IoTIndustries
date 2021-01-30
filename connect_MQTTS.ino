@@ -48,7 +48,7 @@ const static char* test_root_ca PROGMEM = \
     "-----END CERTIFICATE-----\n";
 #elif defined(ESP8266)
 #include <ESP8266WiFi.h>
-const static char fingerprint[] PROGMEM = "f6 15 f1 2a fb b5 ec a1 39 a1 79 30 2a bf 97 bc ce 49 14 5e"; //SHA1 FINGERPRINT
+const static char fingerprint[] PROGMEM = "32 35 82 68 C8 BC 5E 54 AF 69 08 42 32 A7 C6 F1 A5 CD 33 CB"; //SHA1 FINGERPRINT
 #endif
 #if defined(ESP32) || defined(ESP8266)
 WiFiClientSecure  espClient;
