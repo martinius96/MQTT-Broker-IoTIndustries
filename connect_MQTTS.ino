@@ -1,16 +1,13 @@
 //ESP32, ESP8266 - Publish / Subscribe - MQTTS
 //Author: Martin Chlebovec (martinius96)
-//Web: https://arduino.php5.sk
-//ESP8266 COMPATIBLE CORE 2.5.0, 2.5.2
+//ESP8266 TEST CORE: 3.0.2
+//ESP32 TEST CORE: 2.0.1
 //Donate for more: https://paypal.me/chlebovec
 
 #include <PubSubClient.h>
 #include <WiFiClientSecure.h>
 const char* ssid = "MENO_WIFI";
 const char* password = "HESLO_WIFI";
-
-#if defined(ESP32)
-#include <WiFi.h>
 
 // Root CA
 const static char* test_root_ca PROGMEM = \
@@ -46,9 +43,11 @@ const static char* test_root_ca PROGMEM = \
     "Jtl7GQVoP7o81DgGotPmjw7jtHFtQELFhLRAlSv0ZaBIefYdgWOWnU914Ph85I6p\n" \
     "0fKtirOMxyHNwu8=\n" \
     "-----END CERTIFICATE-----\n";
+#if defined(ESP32)
+#include <WiFi.h>
 #elif defined(ESP8266)
 #include <ESP8266WiFi.h>
-const static char fingerprint[] PROGMEM = "32 35 82 68 C8 BC 5E 54 AF 69 08 42 32 A7 C6 F1 A5 CD 33 CB"; //SHA1 FINGERPRINT
+X509List cert(test_root_ca);
 #endif
 #if defined(ESP32) || defined(ESP8266)
 WiFiClientSecure  espClient;
@@ -94,14 +93,35 @@ void setup() {
   Serial.println("UART ready");
 #if defined(ESP32)
   espClient.setCACert(test_root_ca);
-#elif defined(ESP8266)
-  espClient.setFingerprint(fingerprint);
-#endif
-  WiFi.begin(ssid, password);
+      WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
+#elif defined(ESP8266)
+      WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  // Set time via NTP, as required for x.509 validation
+  configTime(3 * 3600, 0, "pool.ntp.org", "time.nist.gov");
+
+  Serial.print("Waiting for NTP time sync: ");
+  time_t now = time(nullptr);
+  while (now < 8 * 3600 * 2) {
+    delay(500);
+    Serial.print(".");
+    now = time(nullptr);
+  }
+  Serial.println("");
+  struct tm timeinfo;
+  gmtime_r(&now, &timeinfo);
+  Serial.print("Current time: ");
+  Serial.print(asctime(&timeinfo));
+  Serial.printf("Using certificate: %s\n", test_root_ca);
+  client.setTrustAnchors(&cert);
+#endif
   Serial.println("WiFi connected");
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
