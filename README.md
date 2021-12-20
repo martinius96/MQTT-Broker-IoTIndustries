@@ -8,7 +8,5 @@
 * Plug n' Play implementations
 #
 ![MQTT Broker - UART - Arduino + Ethernet W5100](https://i.imgur.com/DyHkXkt.png)
-# GET ROOT CA (FOR ESP32 - MQTTS CONENCTION)
+# GET ROOT CA (FOR ESP32 / ESP8266 - MQTTS CONENCTION)
 * openssl s_client -showcerts -verify 5 -connect mqtt.iotindustries.sk:8883 < /dev/null
-# GET FINGERPRINT (FOR ESP8266 - MQTTS CONENCTION)
-* openssl s_client -connect mqtt.iotindustries.sk:8883 -showcerts < /dev/null 2>/dev/null   | openssl x509 -in /dev/stdin -sha1 -noout -fingerprint
